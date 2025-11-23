@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">YtBlocker</string>
+    <string name="accessibility_service_description">Blocks YouTube app and YouTube pages when Strict Mode is enabled.</string>
+</resources>
