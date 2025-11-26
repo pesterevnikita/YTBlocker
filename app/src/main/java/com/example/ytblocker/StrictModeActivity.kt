@@ -24,6 +24,12 @@ class StrictModeActivity : AppCompatActivity() {
             if (isChecked) {
                 Prefs.setStrictMode(true)
                 Toast.makeText(this, "Strict Mode Enabled", Toast.LENGTH_SHORT).show()
+            } else {
+                confirmDisable { success ->
+                    if (!success) {
+                        switchStrict.isChecked = true
+                    }
+                }
             }
         }
 
@@ -34,17 +40,26 @@ class StrictModeActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val dialog = PasswordManager(this)
-            dialog.askPassword(
-                onCorrect = {
-                    Prefs.setStrictMode(false)
+            confirmDisable { success ->
+                if (success) {
                     switchStrict.isChecked = false
-                    Toast.makeText(this, "Strict Mode Disabled", Toast.LENGTH_SHORT).show()
-                },
-                onWrong = {
-                    Toast.makeText(this, "Wrong password", Toast.LENGTH_SHORT).show()
                 }
-            )
+            }
         }
+    }
+
+    private fun confirmDisable(onResult: (Boolean) -> Unit) {
+        val dialog = PasswordManager(this)
+        dialog.askPassword(
+            onCorrect = {
+                Prefs.setStrictMode(false)
+                Toast.makeText(this, "Strict Mode Disabled", Toast.LENGTH_SHORT).show()
+                onResult(true)
+            },
+            onWrong = {
+                Toast.makeText(this, "Wrong password", Toast.LENGTH_SHORT).show()
+                onResult(false)
+            }
+        )
     }
 }
