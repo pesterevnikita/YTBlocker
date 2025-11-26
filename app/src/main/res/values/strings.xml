@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">YtBlocker</string>
     <string name="accessibility_service_description">Blocks YouTube app and YouTube pages when Strict Mode is enabled.</string>
+    <string name="accessibility_status_on">Accessibility service: ENABLED</string>
+    <string name="accessibility_status_off">Accessibility service: DISABLED (tap "Open Accessibility Settings")</string>
+    <string name="strict_mode_status_on">Strict Mode: ENABLED (will block configured targets)</string>
+    <string name="strict_mode_status_off">Strict Mode: DISABLED</string>
+    <string name="device_admin_enabled">Uninstall protection enabled</string>
+    <string name="device_admin_disabled">Uninstall protection removed</string>
+    <string name="device_admin_status_on">Uninstall protection: ENABLED</string>
+    <string name="device_admin_status_off">Uninstall protection: DISABLED (enable to resist removal)</string>
+    <string name="request_admin_explanation">YTBlocker uses device admin to resist easy removal while your accountability partner controls the password.</string>
 </resources>
